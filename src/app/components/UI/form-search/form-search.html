@@ -1,0 +1,38 @@
+<div class="form-container">
+  <p class="sub-title">Busca tu próximo destino</p>
+  <form
+    [formGroup]="form"
+    class="form-search"
+    (ngSubmit)="onSubmit()"
+  >
+    <fieldset class="item-form">
+      <app-input-select
+        label="Ciudad de Origen"
+        [control]="form.controls.origin"
+        placeholder="Ciudad de origen"
+      />
+      <app-input-select
+        label="Ciudad de Destino"
+        [control]="form.controls.destination"
+        placeholder="Ciudad de Destino"
+      />
+    </fieldset>
+    <div class="date-container">
+      <app-input-date
+        [control]="form.controls.startDate"
+        label="Fecha de Ida"
+      />
+      <app-input-date
+        [control]="form.controls.endDate"
+        label="Fecha de Retorno"
+      />
+    </div>
+    <div class="btn-container">
+      <app-primary-button
+        [type]="typeBtn"
+      >
+        Buscar
+      </app-primary-button>
+    </div>
+  </form>
+</div>
