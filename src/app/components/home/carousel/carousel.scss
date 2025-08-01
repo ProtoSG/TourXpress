@@ -1,0 +1,36 @@
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translate(calc(-260px * 2 - 0.5rem * 4 ))
+  }
+}
+
+.carrusel-container {
+  overflow: hidden;
+  width: 100%;
+  mask-image: linear-gradient(
+    90deg,
+    transparent,
+    black 10%,
+    black 90%,
+    transparent,
+  );
+
+  .carrusel {
+    display: flex;
+    white-space: nowrap;
+    animation: scroll 13s linear infinite;
+
+    img {
+      height: 320px;
+      min-width: 260px;
+      width: 260px;
+      object-fit: cover;
+      border-radius: 1rem;
+      margin: 16px;
+    }
+  }
+}
+
