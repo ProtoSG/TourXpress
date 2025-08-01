@@ -1,0 +1,7 @@
+<app-section-container>
+  <div class="payments-container">
+    @for(pay of payments; track pay.alt) {
+      <img [src]="pay.src" [alt]="pay.alt"  />
+    }
+  </div>
+</app-section-container>
