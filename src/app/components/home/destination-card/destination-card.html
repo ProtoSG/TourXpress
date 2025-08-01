@@ -1,0 +1,13 @@
+<article class="card-article">
+  <div class="content-container">
+    <small class="tag"> {{currentCard().city}} </small>
+    <p class="content"> {{currentCard().name}} </p>
+    <button
+      (click)="nextCard()"
+      class="arrow-button"
+    >
+      <mat-icon class="material-symbols-outlined arrow-icon">arrow_right_alt</mat-icon>
+    </button>
+  </div>
+  <img [src]="currentCard().image" [alt]="currentCard().name"/>
+</article>
