@@ -1,0 +1,41 @@
+.footer-container {
+  background: var(--primary-color-500);
+  height: 224px;
+  margin-top: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 120px;
+  color: var(--primary-color-100);
+
+  .logo-container {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    .title {
+      font-size: 3rem;
+      font-weight: 700;
+    }
+  }
+
+  .sn-subtitle {
+    font-weight: 700;
+    font-size: 2rem;
+    margin-bottom: 16px;
+  }
+
+  .social-networks {
+    display: flex;
+    gap: 8px;
+
+    .link {
+      color: var(--primary-color-100);
+
+      img {
+
+      color: var(--primary-color-100);
+      }
+    }
+  }
+}
