@@ -1,0 +1,42 @@
+<app-section-container customClass="section-main">
+  <div class="container d-flex justify-content-between">
+    <div class="left-section">
+      <app-trip-info-panel />
+    </div>
+    
+    <div class="right-section">
+      <div class="payment-details">
+        <h3>Detalles de la compra</h3>
+        <div class="details-grid">
+          <div class="detail-item">
+            <span class="label">Pasajeros:</span>
+            <span class="value">{{ getPassengerCount() }}</span>
+          </div>
+          <div class="detail-item">
+            <span class="label">Asientos:</span>
+            <span class="value">{{ getSeatNumbers() }}</span>
+          </div>
+          <div class="detail-item subtotal">
+            <span class="label">Subtotal:</span>
+            <span class="value">s/ {{ getSubtotal() }}.00</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="total-section">
+        <div class="total-info">
+          <div class="total-item">
+            <span class="label">N° de pasajeros: {{ getPassengerCount() }}</span>
+          </div>
+          <div class="total-item">
+            <span class="total-price">s/ {{ getTotal() }}.00</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="payment-action">
+        <app-primary-button [onClick]="onPay">PAGAR</app-primary-button>
+      </div>
+    </div>
+  </div>
+</app-section-container>

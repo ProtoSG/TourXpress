@@ -1,0 +1,83 @@
+:host {
+  display: block;
+  flex: 1;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  gap: 32px;
+  flex: 1;
+}
+
+.left {
+  flex: 1;
+}
+
+.passenger-card,
+.contact-card {
+  background: #fff;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 16px;
+  border: 1px solid #d7e6e4;
+}
+
+.passenger-card .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.title {
+  margin: 0;
+  font-weight: 600;
+}
+
+.seat {
+  font-size: 12px;
+  color: #6c8b89;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px 16px;
+}
+
+.gender {
+  grid-column: span 2;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.gender .options {
+  display: flex;
+  gap: 24px;
+}
+
+.helper {
+  font-size: 12px;
+  color: #6c8b89;
+}
+
+.action {
+  margin-top: 12px;
+}
+
+.no-seats-message {
+  background: #fff;
+  border-radius: 8px;
+  padding: 24px;
+  text-align: center;
+  border: 1px solid #d7e6e4;
+}
+
+.no-seats-message p {
+  color: #6c8b89;
+  margin: 0;
+}
+
+

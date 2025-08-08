@@ -1,0 +1,50 @@
+  <div class="container">
+    <div class="left">
+      @if (seats().length > 0) {
+        @for (form of passengerForms; track $index) {
+          <div class="passenger-card">
+            <div class="header">
+              <p class="title">Datos del pasajero {{$index + 1}}</p>
+              <span class="seat">Asiento: {{ seats()[$index].seatNumber }}</span>
+            </div>
+            <form [formGroup]="form" class="grid">
+              <app-input-text label="N° Documento" [control]="form.controls.document" placeholder="N° Documento" />
+              <app-input-text label="Nombres" [control]="form.controls.firstName" placeholder="Nombres" />
+              <app-input-text label="Apellidos" [control]="form.controls.lastName" placeholder="Apellidos" />
+              <app-input-date label="Fecha de nacimiento" [control]="form.controls.birthDate" />
+
+              <div class="gender">
+                <label>Género</label>
+                <div class="options">
+                  <label>
+                    <input type="radio" formControlName="gender" value="F" />
+                    Femenino
+                  </label>
+                  <label>
+                    <input type="radio" formControlName="gender" value="M" />
+                    Masculino
+                  </label>
+                </div>
+              </div>
+            </form>
+          </div>
+        }
+
+        <div class="contact-card">
+          <p class="title">Datos de Contacto</p>
+          <p class="helper">Sus boletos y el recibo se enviarán a la dirección del correo electrónico a continuación.</p>
+          <form [formGroup]="contactForm" class="grid">
+            <app-input-text label="Correo electrónico" [control]="contactForm.controls.email" placeholder="Correo electrónico" />
+            <app-input-text label="Número de teléfono o celular" [control]="contactForm.controls.phone" placeholder="Número de teléfono o celular" />
+          </form>
+          <div class="action">
+            <app-primary-button [onClick]="onContinue">Continuar con el pago</app-primary-button>
+          </div>
+        </div>
+      } @else {
+        <div class="no-seats-message">
+          <p>No hay asientos seleccionados. Por favor, selecciona asientos en la página anterior.</p>
+        </div>
+      }
+    </div>
+  </div>
