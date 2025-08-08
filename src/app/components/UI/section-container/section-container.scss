@@ -2,12 +2,23 @@
   max-width: 1200px;
   width: 100%;
   margin: 0 auto;
-}
-
-.section-fullscreen {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 100vh;
   padding-top: 1.6rem;
+  gap: 6rem;
+}
+
+.section-fullscreen {
+  height: 100vh;
+}
+
+.section-main {
+  flex: 1;
+}
+
+.section-header {
+  min-height: 320px;
+  justify-content: center;
+  padding: 0;
 }
