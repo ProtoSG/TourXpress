@@ -2,7 +2,7 @@
   class="btn"
   [type]="type()"
   [disabled]="disabled()"
-  (click)="onClick()"
+  (click)="onClick()()"
 >
   <ng-content />
 </button>
