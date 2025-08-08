@@ -1,0 +1,31 @@
+.price-container {
+  background-color: var(--primary-color-100);
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  white-space: nowrap;
+  min-width: 10rem;
+  max-width: 10rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.price-label {
+  font-size: 0.75rem;
+  text-align: center;
+  color: var(--primary-color-700);
+  font-style: italic;
+}
+
+.price-value {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary-color-500);
+  font-weight: bold;
+}
+
+.price-amount {
+  font-size: 1.875rem; /* 3xl */
+}
+

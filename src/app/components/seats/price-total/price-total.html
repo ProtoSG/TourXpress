@@ -1,0 +1,24 @@
+<div class="price-container">
+  <div>
+    <app-list-seats-selected
+      [seats]="seatsFloor1()"
+      floor="1"
+    ></app-list-seats-selected>
+    <app-list-seats-selected
+      [seats]="seatsFloor2()"
+      floor="2"
+    ></app-list-seats-selected>
+  </div>
+  <div>
+    <p class="price-label">Precio Total</p>
+    <div class="price-value">
+      <small>s/</small>
+      <span class="price-amount">{{ total().toFixed(2) }}</span>
+    </div>
+  </div>
+  <app-primary-button
+    [disabled]="disabledBtn()"
+    [onClick]="handleConfirm">
+    Confirmar
+  </app-primary-button>
+</div>
