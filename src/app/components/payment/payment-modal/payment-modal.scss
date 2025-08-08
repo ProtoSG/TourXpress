@@ -1,0 +1,60 @@
+.modal-wrapper {
+  width: 560px;
+  max-width: 100%;
+  padding: 24px;
+}
+
+.modal-header {
+  padding: 8px 4px 16px;
+  border-bottom: 1px solid #d7e6e4;
+  .order-label {
+    color: #6c8b89;
+    font-size: 12px;
+  }
+  .order-id {
+    color: #435f5f;
+    font-weight: 600;
+    font-size: 12px;
+  }
+}
+
+.methods {
+  margin: 12px 0 8px;
+  gap: 12px;
+  .method {
+    flex: 1;
+    background: #fff;
+    border: 1px solid #d7e6e4;
+    border-radius: 6px;
+    padding: 10px 12px;
+    cursor: pointer;
+  }
+  .active {
+    border-color: var(--primary-color-500);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.06);
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px 16px;
+}
+
+.grid > app-input-text:first-child {
+  grid-column: 1 / -1;
+}
+
+.placeholder {
+  background: #fff;
+  border: 1px dashed #d7e6e4;
+  padding: 24px;
+  border-radius: 8px;
+  color: #6c8b89;
+}
+
+.actions {
+  margin-top: 16px;
+  display: flex;
+  justify-content: center;
+}

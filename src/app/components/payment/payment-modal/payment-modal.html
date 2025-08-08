@@ -1,0 +1,37 @@
+<div class="modal-wrapper">
+  <header class="modal-header d-flex justify-content-between">
+    <span class="order-label">Número de pedido</span>
+    <span class="order-id">{{ orderId }}</span>
+  </header>
+
+  <section class="methods d-flex gap-12">
+    <button type="button" class="method" [class.active]="method()==='card'" (click)="selectMethod('card')">
+      <span>Tarjeta</span>
+    </button>
+    <button type="button" class="method" [class.active]="method()==='qr'" (click)="selectMethod('qr')">
+      <span>QR</span>
+    </button>
+    <button type="button" class="method" [class.active]="method()==='yape'" (click)="selectMethod('yape')">
+      <span>Yape</span>
+    </button>
+  </section>
+
+  @if (method()==='card') {
+    <form [formGroup]="form" class="grid">
+      <app-input-text label="Número de tarjeta" [control]="form.controls.cardNumber" placeholder="Número de tarjeta" />
+      <app-input-text label="Caducidad" [control]="form.controls.expiry" placeholder="MM/AA" />
+      <app-input-text label="CVV" [control]="form.controls.cvv" placeholder="CVV" />
+      <app-input-text label="Nombres" [control]="form.controls.firstName" placeholder="Nombres" />
+      <app-input-text label="Apellidos" [control]="form.controls.lastName" placeholder="Apellidos" />
+      <app-input-text label="Correo electrónico" [control]="form.controls.email" placeholder="Correo electrónico" />
+    </form>
+  } @else if (method()==='qr') {
+    <div class="placeholder">Simulación QR: aquí iría un código QR para pagar.</div>
+  } @else {
+    <div class="placeholder">Simulación Yape: aquí irían instrucciones para Yape.</div>
+  }
+
+  <footer class="actions">
+    <app-primary-button [onClick]="pay">Pagar S/{{data.total.toFixed(2)}}</app-primary-button>
+  </footer>
+</div>
