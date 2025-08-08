@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { PrimaryButton } from '@components/UI';
 import { SeatsSelectedService } from '@services/seats-selected-service';
 import { TotalPriceService } from '@services/total-price-service';
 import { ListSeatsSelected } from '../list-seats-selected/list-seats-selected';
+import { NavigationParamsService } from '@services/navigation-params-service';
 
 @Component({
   selector: 'app-price-total',
@@ -15,7 +16,9 @@ import { ListSeatsSelected } from '../list-seats-selected/list-seats-selected';
 export class PriceTotal {
   private seatsSelectedService = inject(SeatsSelectedService);
   private totalPriceService = inject(TotalPriceService);
-  router = inject(Router)
+  private router = inject(Router);
+  private route = inject(ActivatedRoute);
+  private navigationParamsService = inject(NavigationParamsService);
 
   seats = computed(() => this.seatsSelectedService.seats())
   total = computed(() => this.totalPriceService.total())
@@ -36,6 +39,10 @@ export class PriceTotal {
   }
 
   handleConfirm = () => {
+    // Guardar los parámetros actuales antes de navegar
+    const currentParams = this.route.snapshot.queryParams;
+    this.navigationParamsService.saveCurrentParams('/seats-selection', currentParams);
+    
     this.router.navigate(['/passenger-details'])
   }
 }

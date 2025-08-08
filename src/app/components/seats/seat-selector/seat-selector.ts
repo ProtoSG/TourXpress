@@ -1,7 +1,6 @@
 import { Component, computed, inject, OnInit } from '@angular/core';
 import { SeatService } from '@services/seat-service';
 import { TripSelectedService } from '@services/trip-selected-service';
-import { ActivatedRoute } from '@angular/router';
 import { SeatSelected } from '../seat-selected/seat-selected';
 import { SeatNotSelected } from '../seat-not-selected/seat-not-selected';
 
@@ -12,7 +11,6 @@ import { SeatNotSelected } from '../seat-not-selected/seat-not-selected';
   styleUrl: './seat-selector.scss'
 })
 export class SeatSelector implements OnInit {
-  private route = inject(ActivatedRoute);
   tripSelectedService = inject(TripSelectedService);
   seatService = inject(SeatService);
 
@@ -22,12 +20,7 @@ export class SeatSelector implements OnInit {
   tripId: number = 0;
 
   ngOnInit() {
-    const queryParams = this.route.snapshot.queryParams;
-    console.log("TRIP: ", this.trip().price)
-
-    this.tripId = +queryParams['trip'] || 0;
-
-    this.seatService.getSeatByBusId(this.tripId)
+    this.seatService.getSeatByBusId(this.trip().id)
   }
 
   seatsFloor1 = computed(() =>
