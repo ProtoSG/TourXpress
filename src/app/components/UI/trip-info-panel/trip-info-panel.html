@@ -1,0 +1,26 @@
+<article class="card d-flex flex-column">
+  <section class="route-data d-flex flex-column">
+    @if(typeService()) {
+      <h3 class="subtitle text-center font-semibold text-primary-600"> {{typeService()}} </h3>
+    }
+    <div class="d-flex justify-content-between align-items-center">
+      <p class="font-city"> {{originName()}} </p>
+      <mat-icon class="material-symbols-outlined arrow-icon">arrow_right_alt</mat-icon>
+      <p class="font-city"> {{destinationName()}} </p>
+    </div>
+    <div class="date-container d-flex align-items-center justify-content-center ">
+      <mat-icon class="calendar-icon">calendar_month</mat-icon>
+      <p> {{date()}} </p>
+    </div>
+  </section>
+  @if (hour() && location()){
+    <hr class="break" />
+    <footer class="d-flex align-items-center ">
+    <span class="hour"> {{hour()}} h </span>
+      <div class="ubication-container d-flex flex-column">
+        <small>Embarque</small>
+      <small> {{location()}} </small>
+      </div>
+    </footer>
+  }
+</article>
