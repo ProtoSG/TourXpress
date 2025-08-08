@@ -10,21 +10,21 @@
         label="Ciudad de Origen"
         [control]="form.controls.origin"
         placeholder="Ciudad de origen"
+        [cities]="citiesOrigin()"
+        [onChange]="getDestinationsCity"
       />
       <app-input-select
         label="Ciudad de Destino"
         [control]="form.controls.destination"
         placeholder="Ciudad de Destino"
+        [cities]="citiesDestination()"
       />
     </fieldset>
     <div class="date-container">
       <app-input-date
         [control]="form.controls.startDate"
         label="Fecha de Ida"
-      />
-      <app-input-date
-        [control]="form.controls.endDate"
-        label="Fecha de Retorno"
+        [parentForm]="form"
       />
     </div>
     <div class="btn-container">

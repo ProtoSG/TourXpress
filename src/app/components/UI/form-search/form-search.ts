@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, computed, inject, Signal } from '@angular/core';
 import { InputSelect } from '../input-select/input-select';
 import {
   FormControl,
@@ -10,12 +10,16 @@ import {
 import { PrimaryButton } from '../primary-button/primary-button';
 import { TypeButton } from '@models/button.model';
 import { InputDate } from '../input-date/input-date';
+import { RouteService } from '@services/route-service';
+import { City } from '@models/city.model';
+import { Router } from '@angular/router';
+import { TripInfoService } from '@services/trip-info-service';
+import { TripService } from '@services/trip-service';
 
 interface ItemForm {
   origin: FormControl<number>;
   destination: FormControl<number>;
   startDate: FormControl<Date>;
-  endDate: FormControl<Date>;
 }
 
 @Component({
@@ -32,13 +36,20 @@ interface ItemForm {
 export class FormSearch {
   typeBtn = TypeButton.SUBMIT;
   fb = inject(NonNullableFormBuilder);
+  router = inject(Router)
 
   form: FormGroup<ItemForm> = this.fb.group<ItemForm>({
-    origin: this.fb.control(0, { validators: [Validators.required ] }),
-    destination: this.fb.control(0, { validators: [Validators.required ] }),
-    startDate: this.fb.control(new Date, { validators: [Validators.required] }),
-    endDate:this.fb.control(new Date, { validators: [Validators.required] })
+    origin: this.fb.control(0, { validators: [Validators.required, Validators.min(1) ] }),
+    destination: this.fb.control(0, { validators: [Validators.required, Validators.min(1) ] }),
+    startDate: this.fb.control(new Date(), { validators: [Validators.required] }),
   });
+
+  cityService = inject(RouteService);
+  citiesOrigin: Signal<City[]> = computed(() =>  this.cityService.getFormattedCitiesOrigin());
+  citiesDestination: Signal<City[]> = computed(() =>  this.cityService.getFormattedCitiesDestination());
+
+  tripInfoService = inject(TripInfoService);
+  tripService = inject(TripService);
 
   onSubmit() {
     if (this.form.invalid){
@@ -46,6 +57,43 @@ export class FormSearch {
       return;
     }
 
-    console.log(this.form.value);
+    const formValue = this.form.getRawValue();
+
+    const originCity = this.findCityById(formValue.origin, this.citiesOrigin());
+    const destinationCity = this.findCityById(formValue.destination, this.citiesDestination());
+
+    if (!originCity || !destinationCity) {
+      console.error("No found names of cities");
+      return;
+    }
+
+    const dateStr = formValue.startDate.toISOString().split('T')[0];
+
+    this.tripInfoService.setTripData({
+      originName: originCity.name,
+      destinationName: destinationCity.name,
+      startDate: dateStr,
+      hour: '',
+      location: '',
+      typeService: ''
+    })
+
+    this.tripService.getTrip(formValue.origin, formValue.destination, dateStr);
+
+    this.router.navigate(['/results'], {
+      queryParams: {
+        origin: formValue.origin,
+        destination: formValue.destination,
+        date: dateStr,
+      }
+    });
+  }
+
+  findCityById(id: number, cities: City[]): City | undefined {
+    return cities.find((c) => c.id === id);
+  }
+
+  getDestinationsCity = (id: number)  => {
+    this.cityService.getCitiesDestination(id)
   }
 }
