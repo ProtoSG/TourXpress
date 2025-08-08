@@ -1,5 +1,8 @@
 <div class="progress-container">
-  <span>Paso <strong>{{progress()}}</strong> de <strong>{{totalSteps}}</strong></span>
+  <div class="progress-header">
+    <app-back-button />
+    <span class="progress-text">Paso <strong>{{progress()}}</strong> de <strong>{{totalSteps}}</strong></span>
+  </div>
   <div class="progress" role="progressbar" aria-label="Info example" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
     <div class="progress-bar" [style.width.%]="progressPercentage()"></div>
   </div>

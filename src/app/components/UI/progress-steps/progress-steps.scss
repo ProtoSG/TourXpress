@@ -3,6 +3,17 @@
   flex-direction: column;
   gap: 16px;
 
+  .progress-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .progress-text {
+    font-size: 14px;
+    color: #6c8b89;
+  }
+
   .progress {
     background-color: var(--primary-color-100);
 
