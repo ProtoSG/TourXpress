@@ -17,11 +17,13 @@
     "baseUrl": "./src",
     "paths": {
       "@components/*": ["app/components/*"],
+      "@icons/*": ["app/icons/*"],
       "@pages/*": ["app/pages/*"],
       "@adapters/*": ["app/adapters/*"],
       "@models/*": ["app/models/*"],
       "@sections/*": ["app/sections/*"],
       "@services/*": ["app/services/*"],
+      "@environments/*": ["environments/*"]
     }
   },
   "angularCompilerOptions": {
