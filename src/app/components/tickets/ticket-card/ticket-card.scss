@@ -1,0 +1,85 @@
+.ticket-container {
+  border: 2px solid var(--primary-color-500);
+  border-radius: 1rem;
+
+  .ticket-info {
+    padding: 16px 8px;
+
+    header {
+      padding: 0 12px;
+
+      p {
+        color: var(--primary-color-500);
+      }
+
+      .service-name {
+        font-weight: 700;
+        color: var(--primary-color-700);
+        text-transform: uppercase;
+      }
+    }
+
+    main {
+      margin: 8px 0;
+      padding: 12px 32px;
+      gap: 16px;
+      border-block-width: 2px;
+      border-color: var(--primary-color-500);
+
+      .arrow-icon {
+        color: var(--primary-color-500);
+        font-weight: 700;
+      }
+    }
+
+    footer {
+      padding: 0 12px;
+
+      .bus-container {
+        color: var(--primary-color-500);
+        gap: 8px;
+        font-size: 0.75rem;
+      }
+
+      .seats {
+        color: var(--primary-color-500);
+        font-weight: 700;
+        font-size: 0.75rem;
+      }
+    }
+  }
+
+  .price-container {
+    background-color: var(--primary-color-100);
+    padding: 16px;
+    border-top-right-radius: 1.125rem;
+    border-bottom-right-radius: 1.125rem;
+
+    .text-small-bold {
+      color: var(--primary-color-500);
+      font-weight: 700;
+    }
+
+    .price-info {
+      gap: 8px;
+
+      .text-small {
+        color: var(--primary-color-500);
+        font-size: 1.25rem;
+      }
+
+      .text-span  {
+        color: var(--primary-color-700);
+        font-weight: 700;
+      }
+
+      .text-3xl {
+        font-size: 1.875rem;
+      }
+
+      .text-2xl {
+        font-size: 1.5rem;
+      }
+    }
+  }
+}

@@ -1,0 +1,20 @@
+.terminal-container {
+  color: var(--primary-color-700);
+  gap: 8px;
+
+  .type {
+    font-style: italic;
+  }
+
+  .hour {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color-500);
+  }
+
+  .location {
+    font-size: 0.75rem;
+    text-wrap: pretty;
+    text-align: center;
+  }
+}

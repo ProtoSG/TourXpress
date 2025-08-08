@@ -1,0 +1,5 @@
+<section class="list-container w-100 d-flex flex-column">
+  @for ( trip of trips(); track trip.id ) {
+    <app-ticket-card [trip]="trip" />
+  }
+</section>
