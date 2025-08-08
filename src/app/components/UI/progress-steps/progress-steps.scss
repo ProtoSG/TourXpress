@@ -1,0 +1,16 @@
+.progress-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  .progress {
+    background-color: var(--primary-color-100);
+
+    .progress-bar {
+      background-color: var(--primary-color-500);
+    }
+  }
+}
+
+
+
