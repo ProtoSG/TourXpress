@@ -1,0 +1,7 @@
+@for (seat of seats(); track seat.id) {
+  @if (seat.availability === 0) {
+    <app-seat-selected />
+  } @else {
+    <app-seat-not-selected [seat]="seat" />
+  }
+}
