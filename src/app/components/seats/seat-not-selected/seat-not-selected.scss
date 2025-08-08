@@ -1,0 +1,38 @@
+.seat-container {
+  width: 40px;
+  height: 36px;
+  color: var(--primary-color-700);
+  border-radius: 0.5rem;
+  background-color: var(--primary-color-100);
+  filter: drop-shadow(0 4px 4px rgb(0 0 0 / 0.15));
+  cursor: pointer;
+
+  .break {
+    background-color: var(--primary-color-100);
+    width: 100%;
+    margin: 0;
+  }
+
+  .price-container {
+    width: 100%;
+    border-bottom-left-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+    gap: 4px;
+    transition: color 100ms ease;
+    transition: background-color 100ms ease;
+
+    .price {
+      font-weight: 700;
+    }
+  }
+
+  .price-container.active {
+    background-color: var(--primary-color-500);
+    color: var(--primary-color-100);
+  }
+}
+
+.seat-container:hover .price-container{
+  color: var(--primary-color-100);
+  background-color: var(--primary-color-500);
+}

@@ -1,0 +1,11 @@
+<button
+  class="seat-container d-flex flex-column align-items-center justify-content-center"
+  (click)="addSeat()"
+>
+  <small>{{seat().seatNumber}}</small>
+  <hr class="break" />
+  <div class="price-container d-flex align-items-center justify-content-center transition-colors" [class.active]="selected()">
+    <small>S/</small>
+    <small class="price">{{priceTotal()}}</small>
+  </div>
+</button>
