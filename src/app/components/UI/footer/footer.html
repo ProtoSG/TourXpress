@@ -6,13 +6,23 @@
   <div class="">
     <p class="sn-subtitle">Siguenos</p>
     <ul class="social-networks">
-      @for (item of socialNetworks; track item.link ) {
+      @for (item of socialNetworks; track item.name ) {
         <a
           [href]="item.link"
           target="_blank"
           class="link"
         >
-          <img [src]="item.icon" [alt]="item.label" />
+          @switch (item.name) {
+            @case ('facebook') {
+              <app-facebook-icon />
+            }
+            @case ('youtube') {
+              <app-youtube-icon  />
+            }
+            @case ('instagram') {
+              <app-instagram-icon />
+            }
+          }
         </a>
       }
     </ul>

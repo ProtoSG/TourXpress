@@ -1,32 +1,37 @@
 import { Component } from '@angular/core';
+import { FacebookIcon, InstagramIcon, YoutubeIcon } from '@icons/index';
 
 interface ItemSN {
   icon: string;
+  name: string;
   link: string;
-  label: string;
 }
 
 @Component({
   selector: 'app-footer',
-  imports: [],
+  imports: [
+    FacebookIcon,
+    InstagramIcon,
+    YoutubeIcon,
+  ],
   templateUrl: './footer.html',
   styleUrl: './footer.scss'
 })
 export class Footer {
   socialNetworks: ItemSN[] = [
     {
-      icon: 'assets/icons/facebook.svg',
-      label: 'facebook',
+      name: 'facebook',
+      icon: 'app-facebook-icon',
       link: 'https://www.facebook.com'
     },
     {
-      icon: 'assets/icons/instagram.svg',
-      label: 'instagram',
+      name: 'instagram',
+      icon: 'app-instagram-icon',
       link: 'https://www.instagram.com'
     },
       {
-      icon: 'assets/icons/youtube.svg',
-      label: 'youtube',
+      name: 'youtube',
+      icon: 'app-youtube-icon',
       link: 'https://www.youtube.com'
     },
   ]
