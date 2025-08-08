@@ -7,11 +7,11 @@ export const routes: Routes = [
     component: Home
   },
   {
-    path: "tickets",
+    path: "results",
     component: Tickets
   },
   {
-    path: "seats",
+    path: "seats-selection",
     component: Seats
   },
   {
