@@ -6,4 +6,6 @@ export * from "./input-select/input-select";
 export * from "./primary-button/primary-button";
 export * from "./input-date/input-date";
 export * from "./footer/footer";
-
+export * from "./bg-container/bg-container"
+export * from "./progress-steps/progress-steps"
+export * from "./trip-info-panel/trip-info-panel"
