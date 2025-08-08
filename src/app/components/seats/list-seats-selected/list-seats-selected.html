@@ -1,0 +1,11 @@
+<div className="leading-3 border-b-2 border-primary-800 pb-2 max-w-full">
+  <small className="font-bold text-sm">Piso {{floor()}}</small>
+  <div className="flex flex-wrap leading-4">
+    <small>Asiento(s): </small>
+    @for (seat of seats(); track seat.id){
+      <small class="font-bold px-[2px]">
+        {{seat.seatNumber}}
+      </small>
+    }
+  </div>
+</div>
