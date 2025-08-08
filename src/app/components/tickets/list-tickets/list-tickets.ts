@@ -2,6 +2,7 @@ import { Component, computed, inject } from '@angular/core';
 import { TripService } from '@services/trip-service';
 import { TicketCard } from '../ticket-card/ticket-card';
 import { ActivatedRoute } from '@angular/router';
+import { TripInfoService } from '@services/trip-info-service';
 
 @Component({
   selector: 'app-list-tickets',
@@ -11,7 +12,8 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ListTickets {
   private route = inject(ActivatedRoute);
-  tripService = inject(TripService);
+  private tripService = inject(TripService);
+  private tripInfoService = inject(TripInfoService);
 
   trips = computed(() => this.tripService.getFormattedTrips());
   origin: number = 0;
@@ -20,6 +22,10 @@ export class ListTickets {
 
 
   ngOnInit() {
+    this.tripInfoService.clearLocation();
+    this.tripInfoService.clearTypeService();
+    this.tripInfoService.clearHour();
+
     const queryParams = this.route.snapshot.queryParams;
 
     this.origin = +queryParams['origin'] || 0;
