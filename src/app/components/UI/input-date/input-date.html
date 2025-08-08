@@ -4,4 +4,10 @@
   <mat-hint>MM/DD/YYYY</mat-hint>
   <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
   <mat-datepicker #picker1></mat-datepicker>
+
+  @if (control().invalid && control().touched) {
+    <mat-error>
+      {{ getErrorMessage() }}
+    </mat-error>
+  }
 </mat-form-field>

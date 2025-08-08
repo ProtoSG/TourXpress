@@ -1,6 +1,5 @@
 import { Component, input } from '@angular/core';
-import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { provideNativeDateAdapter } from '@angular/material/core';
+import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -18,6 +17,23 @@ import { MatInputModule } from '@angular/material/input';
   styleUrl: './input-date.scss',
 })
 export class InputDate {
-  control = input(new FormControl);
+  control = input.required<FormControl<Date>>();
+  parentForm = input<FormGroup>();
   label = input('');
+
+  getErrorMessage(): string {
+    const controlErrors = this.control().errors;
+
+    if (controlErrors){
+      const errorKeys = Object.keys(controlErrors);
+      const firstError = errorKeys[0];
+      return this.errorMessage[firstError] || 'Error de validación';
+    }
+
+    return '';
+  }
+
+  errorMessage: Record<string, string> = {
+    required: 'El campo es obligatorio',
+  };
 }
