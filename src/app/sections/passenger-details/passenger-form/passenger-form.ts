@@ -62,7 +62,6 @@ export class PassengerFormSection implements OnInit {
     console.log('Inicializando formularios con asientos:', seats.length);
     console.log('Datos guardados:', savedData);
     
-    // Crear formularios basados en los asientos seleccionados
     this.passengerForms = seats.map((seat, index) => {
       const savedPassenger = savedData.passengers[index];
       return this.fb.group<PassengerFormGroup>({
@@ -74,13 +73,11 @@ export class PassengerFormSection implements OnInit {
       });
     });
 
-    // Crear formulario de contacto
     this.contactForm = this.fb.group<ContactFormGroup>({
       email: this.fb.control(savedData.contact.email || '', { validators: [Validators.required, Validators.email] }),
       phone: this.fb.control(savedData.contact.phone || '', { validators: [Validators.required] }),
     });
 
-    // Suscribirse a cambios para guardar automáticamente
     this.passengerForms.forEach((form, index) => {
       form.valueChanges.subscribe(value => {
         if (form.valid) {
@@ -115,7 +112,6 @@ export class PassengerFormSection implements OnInit {
       return;
     }
 
-    // Navegar a la página de pago
     console.log('Datos de pasajeros guardados:', this.passengerData());
     this.router.navigate(['/payment']);
   }
