@@ -25,7 +25,7 @@ export class TripService {
 
     this.http.get<TripBackend[]>(`${environment.apiUrl}/trip`, {params})
     .subscribe((trips) => {
-      const newMap = new Map(trips.map(trip => [trip.trip_id, trip]));
+      const newMap = new Map(trips.map(trip => [trip.tripID, trip]));
       this.trips.set(newMap);
     })
   }

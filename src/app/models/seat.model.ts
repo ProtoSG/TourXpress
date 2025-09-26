@@ -8,12 +8,12 @@ export interface SeatData {
 }
 
 export interface SeatBackend {
-  seat_id: number;
-  bus_id: number;
-  seat_number: number;
+  seatID: number;
+  busID: number;
+  seatNumber: number;
   floor: number;
   price: number;
-  availability: number;
+  available: number;
 }
 
 export interface Seat {

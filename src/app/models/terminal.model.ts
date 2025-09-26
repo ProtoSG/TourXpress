@@ -1,5 +1,5 @@
 export interface TerminalBackend {
-  terminal_id: number;
+  terminalID: number;
   time: string;
   location: string;
 }

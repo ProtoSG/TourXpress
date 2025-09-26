@@ -1,6 +1,6 @@
 export interface BusBackend {
-  bus_id: number;
-  floor_numbers: number;
+  busID: number;
+  floorNumbers: number;
 }
 
 export interface Bus {

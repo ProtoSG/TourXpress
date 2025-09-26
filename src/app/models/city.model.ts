@@ -1,5 +1,5 @@
 export interface CityBackend {
-  city_id: number;
+  cityID: number;
   name: string;
 }
 

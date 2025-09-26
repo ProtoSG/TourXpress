@@ -19,7 +19,7 @@ export class SeatService {
   getSeatByBusId(id: number) {
     this.http.get<SeatBackend[]>(`${environment.apiUrl}/seat/bus/${id}`)
     .subscribe((seats) => {
-      const newMap = new Map(seats.map(seat => [seat.seat_id, seat]));
+      const newMap = new Map(seats.map(seat => [seat.seatID, seat]));
       this.seats.set(newMap);
     })
   }

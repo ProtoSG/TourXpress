@@ -3,12 +3,12 @@ import { Service, ServiceBackend } from "./service.model";
 import { Terminal, TerminalBackend } from "./terminal.model";
 
 export interface TripBackend {
-  trip_id: number;
+  tripID: number;
   boarding: TerminalBackend;
   disembarkation: TerminalBackend;
   service: ServiceBackend;
   bus: BusBackend;
-  seats_available: number;
+  seatsAvailable: number;
   price: number;
 }
 

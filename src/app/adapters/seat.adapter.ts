@@ -2,11 +2,11 @@ import { Seat, SeatBackend } from "@models/seat.model";
 
 export function seatAdapter(seat: SeatBackend): Seat {
   return {
-    id: seat.seat_id,
-    busId: seat.bus_id,
-    seatNumber: seat.seat_number,
+    id: seat.seatID,
+    busId: seat.busID,
+    seatNumber: seat.seatNumber,
     floor: seat.floor,
     price: seat.price,
-    availability: seat.availability,
+    availability: seat.available,
   }
 }

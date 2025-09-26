@@ -1,6 +1,6 @@
 export interface ServiceBackend {
-  service_id: number;
-  name: string;
+  serviceID: number;
+  description: string;
 }
 
 export interface Service {

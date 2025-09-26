@@ -27,14 +27,14 @@ export class RouteService {
 
   getCitiesOrigin() {
     this.http.get<CityBackend[]>(`${environment.apiUrl}/route/origins-city`).subscribe((cities) => {
-      const newMap = new Map(cities.map(city => [city.city_id, city]));
+      const newMap = new Map(cities.map(city => [city.cityID, city]));
       this.citiesOrigin.set(newMap);
     });
   }
 
   getCitiesDestination(originId: number) {
     this.http.get<CityBackend[]>(`${environment.apiUrl}/route/destinations-city/${originId}`).subscribe((cities) => {
-      const newMap = new Map(cities.map(city => [city.city_id, city]));
+      const newMap = new Map(cities.map(city => [city.cityID, city]));
       this.citiesDestination.set(newMap);
     });
   }

@@ -2,26 +2,26 @@ import { Trip, TripBackend } from "@models/trip.model";
 
 export function tripAdapter(trip: TripBackend): Trip {
   return {
-    id: trip.trip_id,
+    id: trip.tripID,
     boarding: {
-      id: trip.boarding.terminal_id,
+      id: trip.boarding.terminalID,
       time: trip.boarding.time,
       location: trip.boarding.location,
     },
     disembarkation: {
-      id: trip.disembarkation.terminal_id,
+      id: trip.disembarkation.terminalID,
       time: trip.disembarkation.time,
       location: trip.disembarkation.location,
     },
     service: {
-      id: trip.service.service_id,
-      name: trip.service.name,
+      id: trip.service.serviceID,
+      name: trip.service.description,
     },
     bus: {
-      id: trip.bus.bus_id,
-      floorNumbers: trip.bus.floor_numbers,
+      id: trip.bus.busID,
+      floorNumbers: trip.bus.floorNumbers,
     },
-    seatsAvailable: trip.seats_available,
+    seatsAvailable: trip.seatsAvailable,
     price: trip.price
   }
 }
