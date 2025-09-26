@@ -3,6 +3,7 @@ import { inject, Injectable, signal } from '@angular/core';
 import { CityBackend } from '@models/city.model';
 import { cityAdapter } from '@adapters/city.adapter';
 import { environment } from '@environments/environment';
+import { catchError, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -26,16 +27,30 @@ export class RouteService {
   }
 
   getCitiesOrigin() {
-    this.http.get<CityBackend[]>(`${environment.apiUrl}/route/origins-city`).subscribe((cities) => {
-      const newMap = new Map(cities.map(city => [city.cityID, city]));
-      this.citiesOrigin.set(newMap);
-    });
+    this.http.get<CityBackend[]>(`${environment.apiUrl}/route/origins-city`)
+      .pipe(
+        catchError(error => {
+          console.error('Error loading origin cities:', error);
+          return of([]);
+        })
+      )
+      .subscribe((cities) => {
+        const newMap = new Map(cities.map(city => [city.cityID, city]));
+        this.citiesOrigin.set(newMap);
+      });
   }
 
   getCitiesDestination(originId: number) {
-    this.http.get<CityBackend[]>(`${environment.apiUrl}/route/destinations-city/${originId}`).subscribe((cities) => {
-      const newMap = new Map(cities.map(city => [city.cityID, city]));
-      this.citiesDestination.set(newMap);
-    });
+    this.http.get<CityBackend[]>(`${environment.apiUrl}/route/destinations-city/${originId}`)
+      .pipe(
+        catchError(error => {
+          console.error('Error loading destination cities:', error);
+          return of([]);
+        })
+      )
+      .subscribe((cities) => {
+        const newMap = new Map(cities.map(city => [city.cityID, city]));
+        this.citiesDestination.set(newMap);
+      });
   }
 }

@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable, signal } from '@angular/core';
 import { environment } from '@environments/environment';
 import { SeatBackend } from '@models/seat.model';
+import { catchError, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -18,9 +19,15 @@ export class SeatService {
 
   getSeatByBusId(id: number) {
     this.http.get<SeatBackend[]>(`${environment.apiUrl}/seat/bus/${id}`)
-    .subscribe((seats) => {
-      const newMap = new Map(seats.map(seat => [seat.seatID, seat]));
-      this.seats.set(newMap);
-    })
+      .pipe(
+        catchError(error => {
+          console.error('Error loading seats:', error);
+          return of([]);
+        })
+      )
+      .subscribe((seats) => {
+        const newMap = new Map(seats.map(seat => [seat.seatID, seat]));
+        this.seats.set(newMap);
+      })
   }
 }

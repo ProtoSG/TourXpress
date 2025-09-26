@@ -1,11 +1,11 @@
   <div class="container">
     <div class="left">
-      @if (seats().length > 0) {
+      @if (seats() && seats().length > 0) {
         @for (form of passengerForms; track $index) {
           <div class="passenger-card">
             <div class="header">
               <p class="title">Datos del pasajero {{$index + 1}}</p>
-              <span class="seat">Asiento: {{ seats()[$index].seatNumber }}</span>
+               <span class="seat">Asiento: {{ seats()[$index].seatNumber || 'N/A' }}</span>
             </div>
             <form [formGroup]="form" class="grid">
               <app-input-text label="N° Documento" [control]="form.controls.document" placeholder="N° Documento" />

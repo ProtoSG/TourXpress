@@ -20,7 +20,10 @@ export class SeatSelector implements OnInit {
   tripId: number = 0;
 
   ngOnInit() {
-    this.seatService.getSeatByBusId(this.trip().id)
+    const trip = this.trip();
+    if (trip && trip.id) {
+      this.seatService.getSeatByBusId(trip.id);
+    }
   }
 
   seatsFloor1 = computed(() =>

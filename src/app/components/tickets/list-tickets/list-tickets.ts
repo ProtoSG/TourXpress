@@ -32,6 +32,12 @@ export class ListTickets {
     this.destination = +queryParams['destination'] || 0;
     this.date = queryParams['date'] || '';
 
-    this.tripService.getTrip(this.origin, this.destination, this.date)
+    console.log('ListTickets params:', { origin: this.origin, destination: this.destination, date: this.date });
+
+    if (this.origin && this.destination && this.date) {
+      this.tripService.getTrip(this.origin, this.destination, this.date);
+    } else {
+      console.error('Missing required parameters for trip search:', { origin: this.origin, destination: this.destination, date: this.date });
+    }
   }
 }

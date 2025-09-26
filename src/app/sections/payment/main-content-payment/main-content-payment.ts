@@ -28,11 +28,16 @@ export class MainContentPayment {
   typeBtn = TypeButton.BUTTON;
 
   getPassengerCount(): number {
-    return this.seats().length;
+    const seats = this.seats();
+    return seats ? seats.length : 0;
   }
 
   getSeatNumbers(): string {
-    return this.seats()
+    const seats = this.seats();
+    if (!seats || seats.length === 0) {
+      return '';
+    }
+    return seats
       .map(seat => seat.seatNumber.toString().padStart(2, '0'))
       .join(' ');
   }

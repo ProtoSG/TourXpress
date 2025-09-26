@@ -43,15 +43,14 @@ export class PassengerFormSection implements OnInit {
     // Efecto para reinicializar formularios cuando cambien los asientos
     effect(() => {
       const seats = this.seats();
-      console.log('Asientos seleccionados:', seats);
-      if (seats.length > 0 && this.passengerForms.length !== seats.length) {
+  
+      if (seats && seats.length > 0 && this.passengerForms.length !== seats.length) {
         this.initializeForms();
       }
     });
   }
 
   ngOnInit() {
-    console.log('PassengerFormSection ngOnInit');
     this.initializeForms();
   }
 
@@ -59,11 +58,16 @@ export class PassengerFormSection implements OnInit {
     const seats = this.seats();
     const savedData = this.passengerData();
     
+    if (!seats || seats.length === 0) {
+      console.log('No hay asientos seleccionados, no se pueden inicializar formularios');
+      return;
+    }
+    
     console.log('Inicializando formularios con asientos:', seats.length);
     console.log('Datos guardados:', savedData);
     
     this.passengerForms = seats.map((seat, index) => {
-      const savedPassenger = savedData.passengers[index];
+      const savedPassenger = savedData?.passengers?.[index];
       return this.fb.group<PassengerFormGroup>({
         document: this.fb.control(savedPassenger?.document || '', { validators: [Validators.required] }),
         firstName: this.fb.control(savedPassenger?.firstName || '', { validators: [Validators.required] }),
@@ -74,8 +78,8 @@ export class PassengerFormSection implements OnInit {
     });
 
     this.contactForm = this.fb.group<ContactFormGroup>({
-      email: this.fb.control(savedData.contact.email || '', { validators: [Validators.required, Validators.email] }),
-      phone: this.fb.control(savedData.contact.phone || '', { validators: [Validators.required] }),
+      email: this.fb.control(savedData?.contact?.email || '', { validators: [Validators.required, Validators.email] }),
+      phone: this.fb.control(savedData?.contact?.phone || '', { validators: [Validators.required] }),
     });
 
     this.passengerForms.forEach((form, index) => {

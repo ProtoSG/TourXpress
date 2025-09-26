@@ -68,6 +68,7 @@ export class FormSearch {
     }
 
     const dateStr = formValue.startDate.toISOString().split('T')[0];
+    console.log('Date string being sent:', dateStr, 'from date:', formValue.startDate);
 
     this.tripInfoService.setTripData({
       originName: originCity.name,
