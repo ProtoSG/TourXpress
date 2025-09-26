@@ -1,59 +1,157 @@
-# TourXpress
+# TourXpress 🚌
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.1.3.
+TourXpress es una aplicación web de reservas de viajes en autobús desarrollada con Angular 20. Permite a los usuarios buscar rutas, seleccionar asientos, ingresar detalles de pasajeros y procesar pagos de manera intuitiva.
 
-## Development server
+## 🚀 Características
 
-To start a local development server, run:
+- **Búsqueda de rutas**: Encuentra viajes disponibles entre ciudades
+- **Selección de asientos**: Interfaz visual para elegir asientos preferidos
+- **Gestión de pasajeros**: Formulario para capturar información de viajeros
+- **Procesamiento de pagos**: Sistema de pago integrado
+- **Diseño responsivo**: Optimizado para dispositivos móviles y escritorio
+- **SSR**: Renderizado del lado del servidor para mejor SEO
 
-```bash
-ng serve
-```
+## 🛠️ Tecnologías
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+- **Angular 20** - Framework principal
+- **Angular Material** - Componentes UI
+- **Bootstrap 5.3.7** - Sistema de diseño
+- **TypeScript** - Lenguaje de programación
+- **SCSS** - Preprocesador CSS
+- **Express.js** - Servidor SSR
+- **RxJS** - Programación reactiva
 
-## Code scaffolding
+## 📋 Prerequisitos
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+Antes de comenzar, asegúrate de tener instalado:
 
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
+- [Node.js](https://nodejs.org/) (versión 18 o superior)
+- [Angular CLI](https://angular.dev/tools/cli) versión 20.1.3 o superior
 
 ```bash
-ng build
+npm install -g @angular/cli
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+## 🚀 Instalación y configuración
 
-## Running unit tests
+1. **Clona el repositorio**
+   ```bash
+   git clone <repository-url>
+   cd TourXpress
+   ```
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+2. **Instala las dependencias**
+   ```bash
+   npm install
+   ```
+
+3. **Inicia el servidor de desarrollo**
+   ```bash
+   npm start
+   # o
+   ng serve
+   ```
+
+4. **Accede a la aplicación**
+   Abre tu navegador y navega a `http://localhost:4200/`
+
+## 📱 Estructura de páginas
+
+La aplicación cuenta con las siguientes rutas principales:
+
+- `/` - **Inicio**: Búsqueda de viajes y destinos favoritos
+- `/results` - **Tickets**: Lista de viajes disponibles
+- `/seats-selection` - **Selección de asientos**: Interfaz visual de asientos
+- `/passenger-details` - **Datos del pasajero**: Formulario de información
+- `/payment` - **Pago**: Procesamiento de la transacción
+
+## 🏗️ Arquitectura del proyecto
+
+```
+src/
+├── app/
+│   ├── components/          # Componentes reutilizables
+│   ├── pages/              # Páginas principales
+│   ├── sections/           # Secciones específicas por página
+│   ├── services/           # Servicios y lógica de negocio
+│   ├── models/             # Interfaces y tipos TypeScript
+│   ├── adapters/           # Adaptadores de datos
+│   └── icons/              # Iconos personalizados
+├── assets/                 # Recursos estáticos
+└── environments/           # Configuraciones de entorno
+```
+
+## 🔧 Scripts disponibles
+
+```bash
+# Desarrollo
+npm start                    # Inicia el servidor de desarrollo
+npm run watch               # Compilación en modo observación
+
+# Construcción
+npm run build               # Construye para producción
+npm run serve:ssr:TourXpress # Sirve la aplicación SSR
+
+# Testing
+npm test                    # Ejecuta pruebas unitarias
+```
+
+## 🎨 Componentes principales
+
+### Componentes UI
+- **Header/Footer**: Navegación y pie de página
+- **Form components**: Inputs, selects, botones personalizados
+- **Progress steps**: Indicador de progreso del flujo de reserva
+
+### Componentes específicos
+- **Seat selector**: Selección visual de asientos
+- **Trip cards**: Tarjetas de información de viajes
+- **Payment modal**: Modal de procesamiento de pagos
+
+## 🔄 Servicios
+
+- **TripService**: Gestión de viajes y rutas
+- **SeatService**: Manejo de asientos y selección
+- **PassengerDataService**: Datos de pasajeros
+- **LocalStorageService**: Persistencia local
+- **NavigationParamsService**: Parámetros de navegación
+
+## 🧪 Testing
+
+El proyecto utiliza Jasmine y Karma para pruebas unitarias:
 
 ```bash
 ng test
 ```
 
-## Running end-to-end tests
+## 🚀 Despliegue
 
-For end-to-end (e2e) testing, run:
+Para construir la aplicación para producción:
 
 ```bash
-ng e2e
+ng build
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+Los archivos compilados se almacenarán en el directorio `dist/`.
 
-## Additional Resources
+Para servir la aplicación con SSR:
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+```bash
+npm run serve:ssr:TourXpress
+```
+
+## 🤝 Contribución
+
+1. Fork el proyecto
+2. Crea una rama para tu característica (`git checkout -b feature/AmazingFeature`)
+3. Commit tus cambios (`git commit -m 'Add some AmazingFeature'`)
+4. Push a la rama (`git push origin feature/AmazingFeature`)
+5. Abre un Pull Request
+
+## 📄 Licencia
+
+Este proyecto es privado y está sujeto a los términos de la organización.
+
+## 📞 Soporte
+
+Para más información sobre Angular CLI, visita la [documentación oficial](https://angular.dev/tools/cli).
